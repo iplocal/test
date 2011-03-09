@@ -1,9 +1,9 @@
 # Controlling case
 
-import com
+import lib
 
-print com.theStr.upper()
-print com.theStr.lower()
+print lib.theStr.upper()
+print lib.theStr.lower()
 
-print com.theStr.capitalize()
-print com.theStr.title()
+print lib.theStr.capitalize()
+print lib.theStr.title()

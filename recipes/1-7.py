@@ -1,11 +1,11 @@
 # Reversing a string by words or characters
 
-import com
+import lib
 import re
 
-print com.theStr[::-1]
+print lib.theStr[::-1]
 
-theList = com.theStr.split()
+theList = lib.theStr.split()
 theList.reverse()
 print theList
 

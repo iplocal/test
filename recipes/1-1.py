@@ -1,12 +1,12 @@
 # Processing a string one character at a time
 
-import com
+import lib
 
-theList = list(com.theStr)
+theList = list(lib.theStr)
 print theList
 
-for c in com.theStr:
+for c in lib.theStr:
     print c,
 
 print
-print '\''.join(c for c in com.theStr)
+print '\''.join(c for c in lib.theStr)
