@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "test.h"
 
 void prnName(struct stName *mySt)
 {
