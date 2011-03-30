@@ -1,24 +1,20 @@
 # Expanding and compressing tabs
 
-import lib
 import re
 
-def unexpand(aStr, tabLen = 8):
-    pieces = re.split(r'( +)', aStr.expandtabs(tabLen))
-    curLen = 0
+def unexpand(astr, tab_len = 8):
+    pieces = re.split(r'( +)', astr.expandtabs(tab_len))
+    cur_len = 0
     for i, piece in enumerate(pieces):
-        thisLen = len(piece)
-        curLen += thisLen
+        this_len = len(piece)
+        cur_len += this_len
         if piece.isspace():
-            nTabs = curLen / tabLen - (curLen - thisLen) / tabLen
-            if nTabs > 0:
-                nBlanks = curLen % tabLen
-                pieces[i] = '\t' * nTabs + ' ' * nBlanks
-            # nBlanks = curLen % tabLen
-            # nTabs = (thisLen - nBlanks + tabLen - 1) / tabLen
-            # pieces[i] = '\t' * nTabs + ' ' * nBlanks
+            ntab = cur_len / tab_len - (cur_len - this_len) / tab_len
+            if ntab > 0:
+                nblank = cur_len % tab_len
+                pieces[i] = '\t' * ntab + ' ' * nblank
     return ''.join(pieces)
 
-# tabLen = 8
-# print ('|'.ljust(tabLen)) * 10
+# tab_size = 8
+# print ('|'.ljust(tab_size)) * 10
 print unexpand('this        is a string')

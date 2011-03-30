@@ -3,12 +3,12 @@
 import lib
 import re
 
-print lib.theStr[::-1]
+print lib.the_str[::-1]
 
-theList = lib.theStr.split()
-theList.reverse()
-print theList
+alist = lib.the_str.split()
+alist.reverse()
+print alist
 
-aStr = 'This is  Tom Cat,   That   is Garfield.'
-aList = re.split(r'\s+', aStr)
-print ' '.join(reversed(aList))
+astr = 'This is  Tom Cat,   That   is Garfield.'
+alist = re.split(r'\s+', astr)
+print ' '.join(reversed(alist))

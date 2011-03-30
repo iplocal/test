@@ -1,17 +1,15 @@
 # Checking a string for any of multiple endings
 
-import itertools
-
-def anyEnds(pred, seq):
+def any_ends(pred, seq):
     #return True in itertools.imap(pred, seq)
     return True in map(pred, seq)
 
-def endsWith(s, *endings):
-    return anyEnds(s.endswith, endings)
+def ends_with(s, *endings):
+    return any_ends(s.endswith, endings)
 
 files = ['abc.jpg', 'def.txt', 'ghi.gif']
 
-for fileName in files:
-    if endsWith(fileName, '.jpg', '.gif'):
-        print fileName
+for file_name in files:
+    if ends_with(file_name, '.jpg', '.gif'):
+        print file_name
 

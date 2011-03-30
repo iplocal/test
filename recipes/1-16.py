@@ -1,11 +1,10 @@
 # Interpolating variables in a string
 
 def expand(fmt, d, marker = '"', safe = False):
-    if safe:
-        def lookup(w):
+    def lookup(w):
+        if safe:
             return d.get(w, w.join(marker * 2))
-    else:
-        def lookup(w):
+        else:
             return d[w]
     parts = fmt.split(marker)
     parts[1::2] = map(lookup, parts[1::2])

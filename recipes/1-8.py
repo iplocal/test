@@ -1,15 +1,15 @@
 # Checking whether a string contains a set of characters
 
-def containAny(seq, theSet):
+def contain_any(seq, aset):
     for c in seq:
-        if c in theSet:
+        if c in aset:
             return True
 
     return False
 
-theSet = set(['a', 'b', 'c'])
-print containAny('cde', theSet)
-print containAny('def', theSet)
+the_set = set(['a', 'b', 'c'])
+print contain_any('cde', the_set)
+print contain_any('def', the_set)
 
-print bool(set('cde') & theSet)
-print bool(set('def') & theSet)
+print bool(set('cde') & the_set)
+print bool(set('def') & the_set)

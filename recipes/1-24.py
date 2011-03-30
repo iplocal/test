@@ -1,13 +1,14 @@
 # Making some strings case-insensitive
 
-class iStr(str):
-    '''Case insensitive string class.
+class istr(str):
+    """Case insensitive string class.
 
     Behaves just like str, except that all comparisions and lookups
     are case insensitive.
-    '''
-    def __init__(self, *args):
-        self._lowered = str.lower(self)
+    """
+    def __init__(self, ostr):
+        str.__init__(self)
+        self._lowered = ostr.lower()
     def __repr__(self):
         return '%s(%s)' % (type(self).__name__, str.__repr__(self))
     def __hash__(self):
@@ -15,27 +16,30 @@ class iStr(str):
     def lower(self):
         return self._lowered
 
-def _makeCaseIns(name):
-    '''wrap one method of str into an iStr one, case-insensitive'''
-    strMethod = getattr(str, name)
+def _make_case_ins(name):
+    """wrap one method of str into an istr one, case-insensitive"""
+    str_method = getattr(str, name)
     def x(self, other, *args):
-        '''
+        """The case-insensitive method substitution.
+
         Try lowercasing "other", which is typically a string, but
         be prepared to use it as-is if lowering gives problems, since
         strings CAN be correctly compared with non-strings.
-        '''
+        """
         try: other = other.lower()
         except (TypeError, AttributeError, ValueError): pass
-        return strMethod(self._lowered, other, *args)
-    setattr(iStr, name, x)
+        return str_method(self._lowered, other, *args)
+    setattr(istr, name, x)
 
-for name in 'eq lt le gt ge ne str contains'.split():
-    _makeCaseIns('__%s__' % name)
+for name in 'eq lt le gt ge ne contains'.split():
+    _make_case_ins('__%s__' % name)
 
 for name in 'count endswith find index rfind rindex startswith'.split():
-    _makeCaseIns(name)
+    _make_case_ins(name)
 
-del _makeCaseIns
+del _make_case_ins
 
-print iStr('Abc Def').find('DEF')
+tstr = istr('AAAbbb')
+print vars(tstr)
+print istr('Abc Def').find('DEF')
 

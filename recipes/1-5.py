@@ -1,9 +1,9 @@
 # Trimming space from the ends of a string
 
-aStr = '     abc   '
+astr = '     abc   '
 
-print '|', aStr.lstrip(), '|', aStr.rstrip(), '|', aStr.strip(), '|'
+print '|', astr.lstrip(), '|', astr.rstrip(), '|', astr.strip(), '|'
 
-aStr = 'xyzzydxabc yzxzxy'
+astr = 'xyzzydxabc yzxzxy'
 
-print '|' + aStr.strip('xyz') + '|'
+print '|' + astr.strip('xyz') + '|'

@@ -1,7 +1,7 @@
 # Test whether an object is string-like
 
-def isStr(obj):
+def is_str(obj):
     return isinstance(obj, basestring)
 
-print isStr('abc')
-print isStr(123)
+print is_str('abc')
+print is_str(123)

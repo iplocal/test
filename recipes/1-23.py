@@ -3,10 +3,10 @@
 import codecs
 from htmlentitydefs import codepoint2name
 
-def encForXml(uniData, encoding = 'ascii'):
-    return uniData.encode(encoding, 'xmlcharrefreplace')
+def enc_for_xml(uni_data, encoding = 'ascii'):
+    return uni_data.encode(encoding, 'xmlcharrefreplace')
 
-def htmlReplace(exc):
+def html_replace(exc):
     if isinstance(exc, (UnicodeEncodeError, UnicodeTranslateError)):
         s = [u'&%s;' % codepoint2name[ord(c)]
              for c in exc.object[exc.start:exc.end]]
@@ -14,13 +14,13 @@ def htmlReplace(exc):
     else:
         raise TypeError("can't handle %s" % exc.__name__)
 
-codecs.register_error('htmlReplace', htmlReplace)
+codecs.register_error('html_replace', html_replace)
 
-def encForHtml(uniData, encoding = 'ascii'):
-    return uniData.encode(encoding, 'htmlReplace')
+def enc_for_html(uni_data, encoding = 'ascii'):
+    return uni_data.encode(encoding, 'html_replace')
 
 if __name__ == '__main__':
-    data = u'''\
+    data = u"""\
 <html>
 <head>
 <title>Encoding Test</title>
@@ -40,6 +40,6 @@ if __name__ == '__main__':
 </ul>
 </body>
 </html>
-'''
-    print encForXml(data)
-    print encForHtml(data, 'utf8')
+"""
+    print enc_for_xml(data)
+    print enc_for_xml(data, 'utf8')

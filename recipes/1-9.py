@@ -7,18 +7,18 @@ def translator(frm = '', to = '', delete = '', keep = None):
         to = to * len(frm)
     trans = string.maketrans(frm, to)
     if keep != None:
-        allChars = string.maketrans('', '')
-        delete = allChars.translate(allChars, keep.translate(allChars, delete))
+        all_chars = string.maketrans('', '')
+        delete = all_chars.translate(all_chars, keep.translate(all_chars, delete))
     def translate(s):
         return s.translate(trans, delete)
     return translate
 
-aStr = 'Chris Perkins: 224-7992'
-digitOnly = translator(keep = string.digits)
-print digitOnly(aStr)
+astr = 'Chris Perkins: 224-7992'
+digit_only = translator(keep = string.digits)
+print digit_only(astr)
 
-noDigit = translator(delete = string.digits)
-print noDigit(aStr)
+no_digit = translator(delete = string.digits)
+print no_digit(astr)
 
-digitToHash = translator(frm = string.digits, to = '#')
-print digitToHash(aStr)
+digit_to_hash = translator(frm = string.digits, to = '#')
+print digit_to_hash(astr)

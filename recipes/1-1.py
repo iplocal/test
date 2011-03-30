@@ -2,11 +2,11 @@
 
 import lib
 
-theList = list(lib.theStr)
-print theList
+alist = list(lib.the_str)
+print alist
 
-for c in lib.theStr:
+for c in lib.the_str:
     print c,
 
 print
-print '\''.join(c for c in lib.theStr)
+print '\''.join(c for c in lib.the_str)

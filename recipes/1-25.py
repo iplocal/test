@@ -9,32 +9,32 @@ reset = os.popen('tput sgr0').read()
 class TtyFormatter(formatter.AbstractFormatter):
     def __init__(self, writer):
         formatter.AbstractFormatter.__init__(self, writer)
-        self.fontStack = []
-        self.fontState = (0, 0)
+        self.font_stack = []
+        self.font_state = (0, 0)
     def push_font(self, font):
-        size, italic, bold, tt = font
-        self.fontStack.append((italic, bold))
-        self.updateFontState()
-    def pop_font(self, *args):
-        try: self.fontStack.pop()
+        size, italic, bd, tt = font
+        self.font_stack.append((italic, bd))
+        self.update_font_state()
+    def pop_font(self):
+        try: self.font_stack.pop()
         except: pass
-        self.updateFontState()
-    def updateFontState(self):
-        try: newState = self.fontStack[-1]
-        except: newState = (0, 0)
-        if self.fontState != newState:
+        self.update_font_state()
+    def update_font_state(self):
+        try: new_state = self.font_stack[-1]
+        except: new_state = (0, 0)
+        if self.font_state != new_state:
             print reset,
-            if newState[0]: print underline,
-            if newState[1]: print bold,
-            self.fontState = newState
+            if new_state[0]: print underline,
+            if new_state[1]: print bold,
+            self.font_state = new_state
 
-myWriter = formatter.DumbWriter()
+my_writer = formatter.DumbWriter()
 
 if sys.stdout.isatty():
-    myFormatter = TtyFormatter(myWriter)
+    my_formatter = TtyFormatter(my_writer)
 else:
-    myFormatter = formatter.AbstractFormatter(myWriter)
+    my_formatter = formatter.AbstractFormatter(my_writer)
 
-myParser = htmllib.HTMLParser(myFormatter)
-myParser.feed(sys.stdin.read())
-myParser.close()
+my_parser = htmllib.HTMLParser(my_formatter)
+my_parser.feed(sys.stdin.read())
+my_parser.close()

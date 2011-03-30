@@ -2,15 +2,15 @@
 
 import string
 
-allChars = string.maketrans('', '')
+all_chars = string.maketrans('', '')
 
-def makeFilter(keep):
-    delChars = allChars.translate(allChars, keep)
-    def theFilter(s):
-        return s.translate(allChars, delChars)
-    return theFilter
+def make_filter(keep):
+    del_chars = all_chars.translate(all_chars, keep)
+    def the_filter(s):
+        return s.translate(all_chars, del_chars)
+    return the_filter
 
 if __name__ == '__main__':
-    justVowels = makeFilter('aeiouy')
-    print justVowels('four score and seven years ago')
-    print justVowels('tiger, tiger burning bright')
+    just_vowels = make_filter('aeiouy')
+    print just_vowels('four score and seven years ago')
+    print just_vowels('tiger, tiger burning bright')

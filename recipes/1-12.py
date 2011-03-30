@@ -2,8 +2,8 @@
 
 import lib
 
-print lib.theStr.upper()
-print lib.theStr.lower()
+print lib.the_str.upper()
+print lib.the_str.lower()
 
-print lib.theStr.capitalize()
-print lib.theStr.title()
+print lib.the_str.capitalize()
+print lib.the_str.title()
